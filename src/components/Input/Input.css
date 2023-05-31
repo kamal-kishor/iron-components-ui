@@ -1,0 +1,111 @@
+.commonInputDiv {
+    border-radius: 6px;
+    padding: 8px;
+    user-select: none;
+}
+
+.combinedInputField {
+    display: flex;
+}
+
+
+.adornmentContent,
+.oranmentContent {
+    padding: 7.5px;
+}
+
+.commonInputDiv,
+.adornmentContent,
+.oranmentContent,
+.adornInputField,
+.oranInputField {
+    background: transparent;
+    border: 0.4px solid rgba(147, 128, 108, 0.25);
+}
+
+.adornmentContent {
+    border-radius: 6px 0px 0px 6px;
+    border-right: 0;
+}
+
+.adornInputField,
+.oranInputField {
+    display: flex;
+    align-items: start;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    padding: 8px;
+}
+
+.adornInputField,
+.oranmentContent {
+    border-radius: 0px 6px 6px 0px;
+}
+
+.oranInputField {
+    border-radius: 6px 0px 0px 6px;
+}
+
+.oranmentContent {
+    border-left: 0;
+    border-left: 0px;
+}
+
+.commonInputDiv input:focus,
+input.InputAddOn-field:focus {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.commonInputDiv:focus-within,
+.combinedInputField:focus-within,
+.error.commonInputDiv,
+.error.combinedInputField {
+    border-radius: 6px;
+    background: transparent;
+}
+
+.commonInputDiv:focus-within,
+.combinedInputField:focus-within {
+    border: 0.4px solid #0094DA;
+}
+
+.combinedInputField:focus-within .adornmentContent,
+.combinedInputField:focus-within .adornInputField,
+.combinedInputField:focus-within .oranmentContent,
+.combinedInputField:focus-within .oranInputField {
+    outline: none;
+    border: 0px;
+}
+
+.combinedInputField:focus-within .adornmentContent {
+    border-right: 0.4px solid rgba(147, 128, 108, 0.25);
+}
+
+.combinedInputField:focus-within .oranmentContent {
+    border-left: 0.4px solid rgba(147, 128, 108, 0.25);
+}
+
+.error.commonInputDiv,
+.error.combinedInputField {
+    border: 0.4px solid red;
+
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+    border: 0;
+    width: 100%;
+}
+
+span.InputAddOn-item {
+    padding: 0px 4px;
+}
+
+.InputAddOn-item {
+    color: #666666;
+}

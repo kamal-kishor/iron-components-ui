@@ -1,0 +1,37 @@
+span.menuItem-label {
+  min-height: auto;
+  outline: 0px;
+  border: 0px;
+  margin: 0px;
+  border-radius: 0px;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  display: flex;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  align-items: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+span.menuItem-label:hover {
+  color: #1e9de3;
+}
+
+.selected {
+  background: #EFF2FC;
+}
+
+.notSelected {
+  background: transparent;
+}
+
+.removeGutters {
+  padding: 6px 0px;
+}
+
+.addGutters {
+  padding: 6px 16px;
+}
