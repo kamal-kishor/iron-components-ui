@@ -102,7 +102,7 @@ input.InputAddOn-field:focus {
 }
 
 input {
-    /* border: 0; */
+    border: 0;
     width: 100%;
     background: transparent;
 }
