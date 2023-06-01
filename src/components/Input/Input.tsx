@@ -35,7 +35,7 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             )}
             {type !== 'password' && !adornment && !ornament && (
                 <>
-                    <div className={`${error ? 'error' : ''} commonInputDiv  ${className ? className : ''}`}>
+                    <div className={`${error ? 'error' : ''} ${className ? className : 'commonInputDiv'}`}>
                         <input type={_type} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} {...rest} onChange={onChange} data-testid="generalInput" />
                     </div>
                 </>
