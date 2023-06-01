@@ -24,7 +24,7 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
         <>
             {type === 'password' && (
                 <>
-                    <div className={`${error ? 'error' : ''} commonInputDiv combinedInputField ${className ? className : ''}`}>
+                    <div className={`${error ? 'error' : ''} ${className || ''} commonInputDiv combinedInputField`}>
                         <input {...rest} type={inputType} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} onChange={onChange} data-testid="passwordInput" />
                         <span className="passwordIcon" onClick={togglePasswordVisibility} data-testid="passwordVisibility">
                             {showPassword ? <ClosePassword /> : <ShowPassword />}
@@ -34,14 +34,14 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             )}
             {type !== 'password' && !adornment && !ornament && (
                 <>
-                    <div className={`${error ? 'error' : ''} ${className ? className : ''} commonInputDiv`}>
+                    <div className={`${error ? 'error' : ''} ${className || ''} commonInputDiv`}>
                         <input type={_type} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} {...rest} onChange={onChange} data-testid="generalInput" />
                     </div>
                 </>
             )}
             {type !== 'password' && adornment && (
                 <>
-                    <div className={`${error ? 'error' : ''} combinedInputField ${className ? className : ''}`}>
+                    <div className={`${error ? 'error' : ''} ${className || ''} combinedInputField`}>
                         <div className="adornmentContent">
                             <span className="InputAddOn-item InputAddOn-field" data-testid="adornment">
                                 {adornment}
@@ -65,7 +65,7 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             )}
             {type !== 'password' && ornament && (
                 <>
-                    <div className={`${error ? 'error' : ''}  combinedInputField ${className ? className : ''}`}>
+                    <div className={`${error ? 'error' : ''}  ${className || ''} combinedInputField`}>
                         <div className={`oranInputField ${className}`}>
                             <input
                                 className="InputAddOn-field"
