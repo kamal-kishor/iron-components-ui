@@ -1714,7 +1714,7 @@ styleInject(css_248z$f);
 const Button = (props) => {
     const { bg, color, variant = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon, children } = props;
     return (React.createElement(React.Fragment, null,
-        type === 'button' && (React.createElement("button", { ...props, type: "button", className: `${className || ''} 'button button'-${variant}} ${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`, onClick: onClick, disabled: disabled },
+        type === 'button' && (React.createElement("button", { ...props, type: "button", className: `${className || ''} 'button button'-${variant} ${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`, onClick: onClick, disabled: disabled },
             startIcon && React.createElement("span", { className: "start-button-icon" }, startIcon),
             children ? children : 'Button',
             endIcon && React.createElement("span", { className: "end-button-icon" }, endIcon))),
@@ -1792,7 +1792,7 @@ const Input = (props) => {
     if (required)
         _required = required;
     return (React.createElement(React.Fragment, null,
-        React.createElement("input", { className: `${className || ''} ${error ? 'error' : ''} commonInputDiv`, type: _type, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, ...rest, onChange: onChange, "data-testid": "generalInput" })));
+        React.createElement("input", { className: `${className || ''} commonInputDiv ${error ? 'error' : ''}`, type: _type, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, ...rest, onChange: onChange, "data-testid": "generalInput" })));
 };
 
 var css_248z$a = ".NavBarContainer-top {\n  z-index: 1200;\n  padding: 8px 0px;\n  display: flex;\n  position: relative;\n  width: 100%;\n  flex-direction: row;\n  background: #e0f5ff;\n  color: #6c747e;\n  transition: all 0.5s;\n}";

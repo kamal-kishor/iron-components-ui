@@ -24,7 +24,7 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
         <>
             {/* <div className={`${className || ''} ${error ? 'error' : ''}  commonInputDiv`}> */}
             <input
-                className={`${className || ''} ${error ? 'error' : ''} commonInputDiv`}
+                className={`${className || ''} commonInputDiv ${error ? 'error' : ''}`}
                 type={_type}
                 placeholder={_placeholder}
                 autoFocus={autoFocus}
