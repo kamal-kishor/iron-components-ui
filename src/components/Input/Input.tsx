@@ -22,75 +22,68 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
     if (required) _required = required;
 
     const classNameStyles = classnames(className, {
+        commonInputDiv: adornment || ornament,
         error: error
     });
 
     return (
         <>
             {type === 'password' && (
-                <>
-                    <div className={`${classNameStyles} commonInputDiv combinedInputField`}>
-                        <input {...rest} type={inputType} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} onChange={onChange} data-testid="passwordInput" />
-                        <span className="passwordIcon" onClick={togglePasswordVisibility} data-testid="passwordVisibility">
-                            {showPassword ? <ClosePassword /> : <ShowPassword />}
-                        </span>
-                    </div>
-                </>
+                <div className={`${classNameStyles} combinedInputField`}>
+                    <input {...rest} type={inputType} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} onChange={onChange} data-testid="passwordInput" />
+                    <span className="passwordIcon" onClick={togglePasswordVisibility} data-testid="passwordVisibility">
+                        {showPassword ? <ClosePassword /> : <ShowPassword />}
+                    </span>
+                </div>
             )}
             {type !== 'password' && !adornment && !ornament && (
-                <>
-                    <div className={`${classNameStyles} commonInputDiv`}>
-                        <input type={_type} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} {...rest} onChange={onChange} data-testid="generalInput" />
-                    </div>
-                </>
+                <div className={classNameStyles}>
+                    <input type={_type} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} {...rest} onChange={onChange} data-testid="generalInput" />
+                </div>
             )}
             {type !== 'password' && adornment && (
-                <>
-                    <div className={`${classNameStyles} combinedInputField`}>
-                        <div className="adornmentContent">
-                            <span className="InputAddOn-item InputAddOn-field" data-testid="adornment">
-                                {adornment}
-                            </span>
-                        </div>
-                        <div className="adornInputField">
-                            <input
-                                className="InputAddOn-field"
-                                placeholder={_placeholder}
-                                {...rest}
-                                type={_type}
-                                autoFocus={autoFocus}
-                                disabled={disabled}
-                                required={_required}
-                                onChange={onChange}
-                                data-testid="adornmentInput"
-                            />
-                        </div>
+                <div className={`${classNameStyles} combinedInputField`}>
+                    <div className="adornmentContent">
+                        <span className="InputAddOn-item InputAddOn-field" data-testid="adornment">
+                            {adornment}
+                        </span>
                     </div>
-                </>
+                    <div className="adornInputField">
+                        <input
+                            className="InputAddOn-field"
+                            placeholder={_placeholder}
+                            {...rest}
+                            type={_type}
+                            autoFocus={autoFocus}
+                            disabled={disabled}
+                            required={_required}
+                            onChange={onChange}
+                            data-testid="adornmentInput"
+                        />
+                    </div>
+                </div>
             )}
             {type !== 'password' && ornament && (
-                <>
-                    <div className={`${classNameStyles} combinedInputField`}>
-                        <div className="oranInputField">
-                            <input
-                                className="InputAddOn-field"
-                                placeholder={_placeholder}
-                                {...rest}
-                                type={_type}
-                                autoFocus={autoFocus}
-                                disabled={disabled}
-                                required={_required}
-                                onChange={onChange}
-                                data-testid="oranmentInput"
-                            />
-                        </div>
-                        <div className="oranmentContent">
-                            <span className="InputAddOn-item" data-testid="oranment">
-                                {ornament}
-                            </span>
-                        </div>
+                <div className={`${classNameStyles} combinedInputField`}>
+                    <div className="oranInputField">
+                        <input
+                            className="InputAddOn-field"
+                            placeholder={_placeholder}
+                            {...rest}
+                            type={_type}
+                            autoFocus={autoFocus}
+                            disabled={disabled}
+                            required={_required}
+                            onChange={onChange}
+                            data-testid="oranmentInput"
+                        />
                     </div>
-                </>
+                    <div className="oranmentContent">
+                        <span className="InputAddOn-item" data-testid="oranment">
+                            {ornament}
+                        </span>
+                    </div>
+                </div>
             )}
         </>
     );

@@ -1853,28 +1853,25 @@ const Input = (props) => {
     if (required)
         _required = required;
     const classNameStyles = classnames(className, {
+        commonInputDiv: adornment || ornament,
         error: error
     });
     return (React__default.createElement(React__default.Fragment, null,
-        type === 'password' && (React__default.createElement(React__default.Fragment, null,
-            React__default.createElement("div", { className: `${classNameStyles} commonInputDiv combinedInputField` },
-                React__default.createElement("input", { ...rest, type: inputType, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "passwordInput" }),
-                React__default.createElement("span", { className: "passwordIcon", onClick: togglePasswordVisibility, "data-testid": "passwordVisibility" }, showPassword ? React__default.createElement(ClosePassword, null) : React__default.createElement(ShowPassword, null))))),
-        type !== 'password' && !adornment && !ornament && (React__default.createElement(React__default.Fragment, null,
-            React__default.createElement("div", { className: `${classNameStyles} commonInputDiv` },
-                React__default.createElement("input", { type: _type, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, ...rest, onChange: onChange, "data-testid": "generalInput" })))),
-        type !== 'password' && adornment && (React__default.createElement(React__default.Fragment, null,
-            React__default.createElement("div", { className: `${classNameStyles} combinedInputField` },
-                React__default.createElement("div", { className: "adornmentContent" },
-                    React__default.createElement("span", { className: "InputAddOn-item InputAddOn-field", "data-testid": "adornment" }, adornment)),
-                React__default.createElement("div", { className: "adornInputField" },
-                    React__default.createElement("input", { className: "InputAddOn-field", placeholder: _placeholder, ...rest, type: _type, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "adornmentInput" }))))),
-        type !== 'password' && ornament && (React__default.createElement(React__default.Fragment, null,
-            React__default.createElement("div", { className: `${classNameStyles} combinedInputField` },
-                React__default.createElement("div", { className: "oranInputField" },
-                    React__default.createElement("input", { className: "InputAddOn-field", placeholder: _placeholder, ...rest, type: _type, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "oranmentInput" })),
-                React__default.createElement("div", { className: "oranmentContent" },
-                    React__default.createElement("span", { className: "InputAddOn-item", "data-testid": "oranment" }, ornament)))))));
+        type === 'password' && (React__default.createElement("div", { className: `${classNameStyles} combinedInputField` },
+            React__default.createElement("input", { ...rest, type: inputType, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "passwordInput" }),
+            React__default.createElement("span", { className: "passwordIcon", onClick: togglePasswordVisibility, "data-testid": "passwordVisibility" }, showPassword ? React__default.createElement(ClosePassword, null) : React__default.createElement(ShowPassword, null)))),
+        type !== 'password' && !adornment && !ornament && (React__default.createElement("div", { className: classNameStyles },
+            React__default.createElement("input", { type: _type, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, ...rest, onChange: onChange, "data-testid": "generalInput" }))),
+        type !== 'password' && adornment && (React__default.createElement("div", { className: `${classNameStyles} combinedInputField` },
+            React__default.createElement("div", { className: "adornmentContent" },
+                React__default.createElement("span", { className: "InputAddOn-item InputAddOn-field", "data-testid": "adornment" }, adornment)),
+            React__default.createElement("div", { className: "adornInputField" },
+                React__default.createElement("input", { className: "InputAddOn-field", placeholder: _placeholder, ...rest, type: _type, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "adornmentInput" })))),
+        type !== 'password' && ornament && (React__default.createElement("div", { className: `${classNameStyles} combinedInputField` },
+            React__default.createElement("div", { className: "oranInputField" },
+                React__default.createElement("input", { className: "InputAddOn-field", placeholder: _placeholder, ...rest, type: _type, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "oranmentInput" })),
+            React__default.createElement("div", { className: "oranmentContent" },
+                React__default.createElement("span", { className: "InputAddOn-item", "data-testid": "oranment" }, ornament))))));
 };
 
 var css_248z$a = ".NavBarContainer-top {\n  z-index: 1200;\n  padding: 8px 0px;\n  display: flex;\n  position: relative;\n  width: 100%;\n  flex-direction: row;\n  background: #e0f5ff;\n  color: #6c747e;\n  transition: all 0.5s;\n}";
