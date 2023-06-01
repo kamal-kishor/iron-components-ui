@@ -1713,12 +1713,14 @@ styleInject(css_248z$f);
 
 const Button = (props) => {
     const { bg, color, variant = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon, children } = props;
-    return (React.createElement(React.Fragment, null, type === 'button' ? (React.createElement("button", { ...props, type: "button", className: `${className ? className : `button button-${variant}`}${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`, onClick: onClick, disabled: disabled },
-        startIcon && React.createElement("span", { className: "start-button-icon" }, startIcon),
-        children ? children : 'Button',
-        endIcon && React.createElement("span", { className: "end-button-icon" }, endIcon))) : (React.createElement(React.Fragment, null,
-        React.createElement("input", { className: "uploadFile", type: "file", hidden: true, multiple: multiple, id: "upload-btn" }),
-        React.createElement("label", { className: `${className ? className : `button button-${variant}`}${disabled ? `button_disabled` : ''}`, htmlFor: "upload-btn" }, children ? children : 'Upload Button')))));
+    return (React.createElement(React.Fragment, null,
+        type === 'button' && (React.createElement("button", { ...props, type: "button", className: `${className ? className : `button button-${variant}`} ${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`, onClick: onClick, disabled: disabled },
+            startIcon && React.createElement("span", { className: "start-button-icon" }, startIcon),
+            children ? children : 'Button',
+            endIcon && React.createElement("span", { className: "end-button-icon" }, endIcon))),
+        type === 'file' && (React.createElement(React.Fragment, null,
+            React.createElement("input", { className: "uploadFile", type: "file", hidden: true, multiple: multiple, id: "upload-btn" }),
+            React.createElement("label", { className: `${className ? className : `button button-${variant}`} ${disabled ? `button_disabled` : ''}`, htmlFor: "upload-btn" }, children ? children : 'Upload Button')))));
 };
 
 var css_248z$e = ".card {\n    background-color: #fff;\n    color: rgba(0, 0, 0, 0.87);\n    border-radius: 4px;\n    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);\n    overflow: hidden;\n    max-width: 345px;\n}\n\n.noBorderCard {\n    border: none;\n}\n\n.cardHead,\n.cardFooter {\n    text-align: center;\n    align-items: center;\n    justify-content: center;\n}\n\n.cardHead {\n    margin: 0;\n    font-weight: 500;\n    background: #D9D9D9;\n}\n\nimg.cardImg {\n    display: block;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center;\n    width: 100%;\n    object-fit: cover;\n}\n\n.cardBody {\n    padding: 16px;\n}\n\n.cardFooter {\n    padding: 8px;\n    justify-content: start;\n    display: flex;\n}\n\n.cardTitle {\n    margin: 0;\n    font-size: 24px;\n    font-weight: 600;\n    line-height: 2.043;\n    margin-bottom: 0.35em;\n}\n\n.cardFooter,\np.cardDesc {\n    margin: 0;\n    color: #858585;\n}\n\np.cardDesc {\n    font-size: 0.875rem;\n    line-height: 1.43;\n    letter-spacing: 0.01071em;\n}";
@@ -1807,20 +1809,20 @@ const Input = (props) => {
         _required = required;
     return (React.createElement(React.Fragment, null,
         type === 'password' && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `${error ? 'error' : ''} commonInputDiv combinedInputField ${className}` },
+            React.createElement("div", { className: `${error ? 'error' : ''} commonInputDiv combinedInputField ${className ? className : ''}` },
                 React.createElement("input", { ...rest, type: inputType, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "passwordInput" }),
                 React.createElement("span", { className: "passwordIcon", onClick: togglePasswordVisibility, "data-testid": "passwordVisibility" }, showPassword ? React.createElement(ClosePassword, null) : React.createElement(ShowPassword, null))))),
         type !== 'password' && !adornment && !ornament && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `${error ? 'error' : ''} commonInputDiv  ${className}` },
+            React.createElement("div", { className: `${error ? 'error' : ''} commonInputDiv  ${className ? className : ''}` },
                 React.createElement("input", { type: _type, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, ...rest, onChange: onChange, "data-testid": "generalInput" })))),
         type !== 'password' && adornment && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `${error ? 'error' : ''} combinedInputField` },
+            React.createElement("div", { className: `${error ? 'error' : ''} combinedInputField ${className ? className : ''}` },
                 React.createElement("div", { className: "adornmentContent" },
                     React.createElement("span", { className: "InputAddOn-item InputAddOn-field", "data-testid": "adornment" }, adornment)),
-                React.createElement("div", { className: `adornInputField ${className}` },
+                React.createElement("div", { className: `adornInputField ` },
                     React.createElement("input", { className: "InputAddOn-field", placeholder: _placeholder, ...rest, type: _type, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "adornmentInput" }))))),
         type !== 'password' && ornament && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `${error ? 'error' : ''}  combinedInputField` },
+            React.createElement("div", { className: `${error ? 'error' : ''}  combinedInputField ${className ? className : ''}` },
                 React.createElement("div", { className: `oranInputField ${className}` },
                     React.createElement("input", { className: "InputAddOn-field", placeholder: _placeholder, ...rest, type: _type, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "oranmentInput" })),
                 React.createElement("div", { className: "oranmentContent" },
