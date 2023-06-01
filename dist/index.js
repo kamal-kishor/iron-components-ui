@@ -1780,7 +1780,7 @@ var css_248z$b = ".commonInputDiv {\n    border-radius: 6px;\n    padding: 8px;\
 styleInject(css_248z$b);
 
 const Input = (props) => {
-    const { className = 'inputArea', placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
+    const { className, placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
     React.useState(false);
     let _placeholder = 'Input Field';
     let _type = 'text';
@@ -1792,7 +1792,7 @@ const Input = (props) => {
     if (required)
         _required = required;
     return (React.createElement(React.Fragment, null,
-        React.createElement("input", { className: `${className || ''} ${error ? 'error' : ''}  commonInputDiv`, type: _type, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, ...rest, onChange: onChange, "data-testid": "generalInput" })));
+        React.createElement("input", { className: `${className || ''} ${error ? 'error' : ''} commonInputDiv`, type: _type, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, ...rest, onChange: onChange, "data-testid": "generalInput" })));
 };
 
 var css_248z$a = ".NavBarContainer-top {\n  z-index: 1200;\n  padding: 8px 0px;\n  display: flex;\n  position: relative;\n  width: 100%;\n  flex-direction: row;\n  background: #e0f5ff;\n  color: #6c747e;\n  transition: all 0.5s;\n}";
