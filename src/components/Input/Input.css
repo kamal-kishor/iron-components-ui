@@ -8,7 +8,6 @@
     display: flex;
 }
 
-
 .adornmentContent,
 .oranmentContent {
     padding: 7.5px;
@@ -89,10 +88,9 @@ input.InputAddOn-field:focus {
     border-left: 0.4px solid rgba(147, 128, 108, 0.25);
 }
 
-.error,
-.error {
+.error.commonInputDiv,
+.error.combinedInputField {
     border: 0.4px solid red;
-
 }
 
 input[type='text'],

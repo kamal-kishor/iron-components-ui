@@ -22,71 +22,9 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
 
     return (
         <>
-            {type === 'password' && (
-                <>
-                    <div className={`${error ? 'error' : ''} ${className || ''} commonInputDiv combinedInputField`}>
-                        <input {...rest} type={inputType} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} onChange={onChange} data-testid="passwordInput" />
-                        <span className="passwordIcon" onClick={togglePasswordVisibility} data-testid="passwordVisibility">
-                            {showPassword ? <ClosePassword /> : <ShowPassword />}
-                        </span>
-                    </div>
-                </>
-            )}
-            {type !== 'password' && !adornment && !ornament && (
-                <>
-                    <div className={`${error ? 'error' : ''} ${className || ''} commonInputDiv`}>
-                        <input type={_type} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} {...rest} onChange={onChange} data-testid="generalInput" />
-                    </div>
-                </>
-            )}
-            {type !== 'password' && adornment && (
-                <>
-                    <div className={`${error ? 'error' : ''} ${className || ''} combinedInputField`}>
-                        <div className="adornmentContent">
-                            <span className="InputAddOn-item InputAddOn-field" data-testid="adornment">
-                                {adornment}
-                            </span>
-                        </div>
-                        <div className={`adornInputField `}>
-                            <input
-                                className="InputAddOn-field"
-                                placeholder={_placeholder}
-                                {...rest}
-                                type={_type}
-                                autoFocus={autoFocus}
-                                disabled={disabled}
-                                required={_required}
-                                onChange={onChange}
-                                data-testid="adornmentInput"
-                            />
-                        </div>
-                    </div>
-                </>
-            )}
-            {type !== 'password' && ornament && (
-                <>
-                    <div className={`${error ? 'error' : ''}  ${className || ''} combinedInputField`}>
-                        <div className={`oranInputField ${className}`}>
-                            <input
-                                className="InputAddOn-field"
-                                placeholder={_placeholder}
-                                {...rest}
-                                type={_type}
-                                autoFocus={autoFocus}
-                                disabled={disabled}
-                                required={_required}
-                                onChange={onChange}
-                                data-testid="oranmentInput"
-                            />
-                        </div>
-                        <div className="oranmentContent">
-                            <span className="InputAddOn-item" data-testid="oranment">
-                                {ornament}
-                            </span>
-                        </div>
-                    </div>
-                </>
-            )}
+            <div className={`${error ? 'error' : ''} ${className || ''} commonInputDiv`}>
+                <input type={_type} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} {...rest} onChange={onChange} data-testid="generalInput" />
+            </div>
         </>
     );
 };
