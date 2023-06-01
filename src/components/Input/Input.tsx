@@ -6,7 +6,7 @@ import '../../commonstyle/commonstyle.css';
 import './Input.css';
 
 export const Input: React.FunctionComponent<InputProps> = (props) => {
-    const { className = 'inputArea', placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
+    const { className, placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => {
         setShowPassword((prevState) => !prevState);
@@ -20,6 +20,14 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
     if (type) _type = type;
     if (required) _required = required;
 
+    const inlineStyles = className
+        ? Object.fromEntries(
+              className
+                  .trim()
+                  .split(' ')
+                  .map((classItem) => classItem.split(':'))
+          )
+        : {};
     return (
         <>
             {type === 'password' && (
@@ -34,7 +42,7 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             )}
             {type !== 'password' && !adornment && !ornament && (
                 <>
-                    <div className={`${error ? 'error' : ''} ${className || ''} commonInputDiv`}>
+                    <div className={`${error ? 'error' : ''} ${className || ''} commonInputDiv`} style={inlineStyles}>
                         <input type={_type} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} {...rest} onChange={onChange} data-testid="generalInput" />
                     </div>
                 </>

@@ -8,7 +8,7 @@ export const Button = (props: React.PropsWithChildren<ButtonProps>) => {
 
     return (
         <>
-            {type === 'button' && (
+            {(type === 'button' || type === 'submit' || type === 'reset') && (
                 <button
                     {...props}
                     type="button"

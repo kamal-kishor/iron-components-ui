@@ -1714,7 +1714,7 @@ styleInject(css_248z$f);
 const Button = (props) => {
     const { bg, color, variant = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon, children } = props;
     return (React.createElement(React.Fragment, null,
-        type === 'button' && (React.createElement("button", { ...props, type: "button", className: `${className || ''} button button-${variant} ${disabled ? 'button_disabled' : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`, onClick: onClick, disabled: disabled },
+        (type === 'button' || type === 'submit' || type === 'reset') && (React.createElement("button", { ...props, type: "button", className: `${className || ''} button button-${variant} ${disabled ? 'button_disabled' : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`, onClick: onClick, disabled: disabled },
             startIcon && React.createElement("span", { className: "start-button-icon" }, startIcon),
             children ? children : 'Button',
             endIcon && React.createElement("span", { className: "end-button-icon" }, endIcon))),
@@ -1792,7 +1792,7 @@ var css_248z$b = "/* .commonInputDiv {\n    border-radius: 6px;\n    padding: 8p
 styleInject(css_248z$b);
 
 const Input = (props) => {
-    const { className = 'inputArea', placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
+    const { className, placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
     const [showPassword, setShowPassword] = React.useState(false);
     const togglePasswordVisibility = () => {
         setShowPassword((prevState) => !prevState);
@@ -1807,13 +1807,19 @@ const Input = (props) => {
         _type = type;
     if (required)
         _required = required;
+    const inlineStyles = className
+        ? Object.fromEntries(className
+            .trim()
+            .split(' ')
+            .map((classItem) => classItem.split(':')))
+        : {};
     return (React.createElement(React.Fragment, null,
         type === 'password' && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `${error ? 'error' : ''} ${className || ''} commonInputDiv combinedInputField` },
                 React.createElement("input", { ...rest, type: inputType, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "passwordInput" }),
                 React.createElement("span", { className: "passwordIcon", onClick: togglePasswordVisibility, "data-testid": "passwordVisibility" }, showPassword ? React.createElement(ClosePassword, null) : React.createElement(ShowPassword, null))))),
         type !== 'password' && !adornment && !ornament && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `${error ? 'error' : ''} ${className || ''} commonInputDiv` },
+            React.createElement("div", { className: `${error ? 'error' : ''} ${className || ''} commonInputDiv`, style: inlineStyles },
                 React.createElement("input", { type: _type, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, ...rest, onChange: onChange, "data-testid": "generalInput" })))),
         type !== 'password' && adornment && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `${error ? 'error' : ''} ${className || ''} combinedInputField` },
