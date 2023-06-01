@@ -89,8 +89,8 @@ input.InputAddOn-field:focus {
     border-left: 0.4px solid rgba(147, 128, 108, 0.25);
 }
 
-.error.commonInputDiv,
-.error.combinedInputField {
+.error,
+.error {
     border: 0.4px solid red;
 
 }
@@ -100,6 +100,7 @@ input[type='email'],
 input[type='password'] {
     border: 0;
     width: 100%;
+    background: transparent;
 }
 
 span.InputAddOn-item {
