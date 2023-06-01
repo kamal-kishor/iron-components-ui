@@ -1,6 +1,6 @@
 {
     "name": "iron-components-ui",
-    "version": "1.0.17",
+    "version": "1.0.18",
     "description": "A component library for React, TS, Next",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
@@ -74,5 +74,5 @@
         "ts-node": "^10.9.1"
     },
     "readme": "ERROR: No README data found!",
-    "_id": "iron-components-ui@1.0.17"
+    "_id": "iron-components-ui@1.0.18"
 }
