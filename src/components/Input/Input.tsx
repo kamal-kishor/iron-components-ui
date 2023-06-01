@@ -19,15 +19,15 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
     if (placeholder) _placeholder = placeholder;
     if (type) _type = type;
     if (required) _required = required;
-
-    const inlineStyles = className
-        ? Object.fromEntries(
-              className
-                  .trim()
-                  .split(' ')
-                  .map((classItem) => classItem.split(':'))
-          )
-        : {};
+    let inlineStyles = {};
+    if (typeof className === 'string' && className.trim() !== '') {
+        inlineStyles = Object.fromEntries(
+            className
+                .trim()
+                .split(' ')
+                .map((classItem) => classItem.split(':'))
+        );
+    }
     return (
         <>
             {type === 'password' && (

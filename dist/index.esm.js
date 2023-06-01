@@ -1787,12 +1787,13 @@ const Input = (props) => {
         _type = type;
     if (required)
         _required = required;
-    const inlineStyles = className
-        ? Object.fromEntries(className
+    let inlineStyles = {};
+    if (typeof className === 'string' && className.trim() !== '') {
+        inlineStyles = Object.fromEntries(className
             .trim()
             .split(' ')
-            .map((classItem) => classItem.split(':')))
-        : {};
+            .map((classItem) => classItem.split(':')));
+    }
     return (React__default.createElement(React__default.Fragment, null,
         type === 'password' && (React__default.createElement(React__default.Fragment, null,
             React__default.createElement("div", { className: `${error ? 'error' : ''} ${className || ''} commonInputDiv combinedInputField` },
