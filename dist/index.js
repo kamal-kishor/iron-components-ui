@@ -1813,7 +1813,7 @@ const Input = (props) => {
                 React.createElement("input", { ...rest, type: inputType, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "passwordInput" }),
                 React.createElement("span", { className: "passwordIcon", onClick: togglePasswordVisibility, "data-testid": "passwordVisibility" }, showPassword ? React.createElement(ClosePassword, null) : React.createElement(ShowPassword, null))))),
         type !== 'password' && !adornment && !ornament && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `${error ? 'error' : ''} 'commonInputDiv${className ? className : ''}` },
+            React.createElement("div", { className: `${error ? 'error' : ''} commonInputDiv ${className ? className : ''}` },
                 React.createElement("input", { type: _type, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, ...rest, onChange: onChange, "data-testid": "generalInput" })))),
         type !== 'password' && adornment && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `${error ? 'error' : ''} combinedInputField ${className ? className : ''}` },
