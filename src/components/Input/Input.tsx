@@ -22,9 +22,19 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
 
     return (
         <>
-            <div className={`${error ? 'error' : ''} ${className || ''} commonInputDiv`}>
-                <input type={_type} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} {...rest} onChange={onChange} data-testid="generalInput" />
-            </div>
+            {/* <div className={`${className || ''} ${error ? 'error' : ''}  commonInputDiv`}> */}
+            <input
+                className={`${className || ''} ${error ? 'error' : ''}  commonInputDiv`}
+                type={_type}
+                placeholder={_placeholder}
+                autoFocus={autoFocus}
+                disabled={disabled}
+                required={_required}
+                {...rest}
+                onChange={onChange}
+                data-testid="generalInput"
+            />
+            {/* </div> */}
         </>
     );
 };
