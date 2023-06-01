@@ -2,8 +2,15 @@
     border-radius: 6px;
     padding: 8px;
     user-select: none;
+    background: transparent;
+    border: 0.4px solid rgba(147, 128, 108, 0.25);
 }
 
+/* .commonInputDiv {
+    border-radius: 6px;
+    padding: 8px;
+    user-select: none;
+} */
 .combinedInputField {
     display: flex;
 }
@@ -13,7 +20,7 @@
     padding: 7.5px;
 }
 
-.commonInputDiv,
+/* .commonInputDiv, */
 .adornmentContent,
 .oranmentContent,
 .adornInputField,
