@@ -26,7 +26,13 @@ export default {
         commonjs(),
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
-            extensions: ['.css', 'module.css']
+            extensions: ['.css', 'module.css'],
+            import: (id) => {
+                if (id.endsWith('my-custom-styles.css')) {
+                    return false;
+                }
+                return true;
+            }
         })
     ]
 };

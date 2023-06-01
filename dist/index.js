@@ -1792,7 +1792,7 @@ var css_248z$b = "/* .commonInputDiv {\n    border-radius: 6px;\n    padding: 8p
 styleInject(css_248z$b);
 
 const Input = (props) => {
-    const { className, placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
+    const { className = 'inputArea', placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
     const [showPassword, setShowPassword] = React.useState(false);
     const togglePasswordVisibility = () => {
         setShowPassword((prevState) => !prevState);
@@ -1807,29 +1807,22 @@ const Input = (props) => {
         _type = type;
     if (required)
         _required = required;
-    let inlineStyles = {};
-    if (typeof className === 'string' && className.trim() !== '') {
-        inlineStyles = Object.fromEntries(className
-            .trim()
-            .split(' ')
-            .map((classItem) => classItem.split(':')));
-    }
     return (React.createElement(React.Fragment, null,
         type === 'password' && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `${error ? 'error' : ''} ${className || ''} commonInputDiv combinedInputField` },
+            React.createElement("div", { className: `${className}${error ? 'error' : ''} commonInputDiv combinedInputField ` },
                 React.createElement("input", { ...rest, type: inputType, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "passwordInput" }),
                 React.createElement("span", { className: "passwordIcon", onClick: togglePasswordVisibility, "data-testid": "passwordVisibility" }, showPassword ? React.createElement(ClosePassword, null) : React.createElement(ShowPassword, null))))),
         type !== 'password' && !adornment && !ornament && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `${error ? 'error' : ''} ${className || ''} commonInputDiv`, style: inlineStyles },
+            React.createElement("div", { className: `${className} ${error ? 'error' : ''} commonInputDiv` },
                 React.createElement("input", { type: _type, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, ...rest, onChange: onChange, "data-testid": "generalInput" })))),
         type !== 'password' && adornment && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `${error ? 'error' : ''} ${className || ''} combinedInputField` },
+            React.createElement("div", { className: `${className} ${error ? 'error' : ''} combinedInputField` },
                 React.createElement("div", { className: "adornmentContent" },
                     React.createElement("span", { className: "InputAddOn-item InputAddOn-field", "data-testid": "adornment" }, adornment)),
-                React.createElement("div", { className: `adornInputField ` },
+                React.createElement("div", { className: `adornInputField ${className}` },
                     React.createElement("input", { className: "InputAddOn-field", placeholder: _placeholder, ...rest, type: _type, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "adornmentInput" }))))),
         type !== 'password' && ornament && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `${error ? 'error' : ''}  ${className || ''} combinedInputField` },
+            React.createElement("div", { className: `${className} ${error ? 'error' : ''}  combinedInputField` },
                 React.createElement("div", { className: `oranInputField ${className}` },
                     React.createElement("input", { className: "InputAddOn-field", placeholder: _placeholder, ...rest, type: _type, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "oranmentInput" })),
                 React.createElement("div", { className: "oranmentContent" },

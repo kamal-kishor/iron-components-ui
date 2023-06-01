@@ -6,12 +6,13 @@ import '../../commonstyle/commonstyle.css';
 import './Input.css';
 
 export const Input: React.FunctionComponent<InputProps> = (props) => {
-    const { className, placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
+    const { className = 'inputArea', placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => {
         setShowPassword((prevState) => !prevState);
     };
     const inputType = type === 'password' ? (showPassword ? 'text' : 'password') : type;
+    const inputClassName = `inputField ${className} ${type === 'password' ? 'password' : ''}`;
 
     let _placeholder: string = 'Input Field';
     let _type: string = 'text';
@@ -20,15 +21,11 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
     if (type) _type = type;
     if (required) _required = required;
 
-    const inlineStyles = {
-        ...(className ? { className } : {})
-    };
-
     return (
         <>
             {type === 'password' && (
                 <>
-                    <div style={inlineStyles} className={`commonInputDiv combinedInputField`}>
+                    <div className={`${className}${error ? 'error' : ''} commonInputDiv combinedInputField `}>
                         <input {...rest} type={inputType} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} onChange={onChange} data-testid="passwordInput" />
                         <span className="passwordIcon" onClick={togglePasswordVisibility} data-testid="passwordVisibility">
                             {showPassword ? <ClosePassword /> : <ShowPassword />}
@@ -38,20 +35,20 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             )}
             {type !== 'password' && !adornment && !ornament && (
                 <>
-                    <div style={inlineStyles} className={`commonInputDiv`}>
+                    <div className={`${className} ${error ? 'error' : ''} commonInputDiv`}>
                         <input type={_type} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} {...rest} onChange={onChange} data-testid="generalInput" />
                     </div>
                 </>
             )}
             {type !== 'password' && adornment && (
                 <>
-                    <div style={inlineStyles} className={`combinedInputField`}>
+                    <div className={`${className} ${error ? 'error' : ''} combinedInputField`}>
                         <div className="adornmentContent">
                             <span className="InputAddOn-item InputAddOn-field" data-testid="adornment">
                                 {adornment}
                             </span>
                         </div>
-                        <div className={`adornInputField `}>
+                        <div className={`adornInputField ${className}`}>
                             <input
                                 className="InputAddOn-field"
                                 placeholder={_placeholder}
@@ -69,7 +66,7 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             )}
             {type !== 'password' && ornament && (
                 <>
-                    <div style={inlineStyles} className={`combinedInputField`}>
+                    <div className={`${className} ${error ? 'error' : ''}  combinedInputField`}>
                         <div className={`oranInputField ${className}`}>
                             <input
                                 className="InputAddOn-field"
