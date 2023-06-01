@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
-        /* Visit https://aka.ms/tsconfig to read more about this file */
-        "target": "es2021" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+        "target": "es2021",
         "lib": ["ES5", "ES2015", "ES2016", "DOM", "ESNext"],
         "jsx": "react",
         "module": "ES2015",
