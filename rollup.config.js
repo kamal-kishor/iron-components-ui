@@ -3,6 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
+import postcssCustomProperties from 'postcss-custom-properties';
 
 const packageJson = require('./package.json');
 
@@ -31,10 +32,7 @@ export default {
                 generateScopedName: '[name]__[local]'
             },
             autoModules: true,
-            use: ['postcss-imported-vars'],
-            plugins: {
-                'postcss-imported-vars': {}
-            },
+            plugins: [postcssCustomProperties()],
             extensions: ['.css', 'scss', 'module.css']
         })
     ]
