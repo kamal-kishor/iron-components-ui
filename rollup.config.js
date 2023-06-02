@@ -29,7 +29,10 @@ export default {
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
             extract: false,
-            modules: true,
+            modules: {
+                exportGlobals: true,
+                localIdentName: '[local]__[hash:base64:5]'
+            },
             plugins: [postcssImport(), postcssNested()]
         })
     ]

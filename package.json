@@ -1,6 +1,6 @@
 {
     "name": "iron-components-ui",
-    "version": "1.0.65",
+    "version": "1.0.66",
     "description": "A component library for React, TS, Next",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
@@ -55,6 +55,7 @@
         "postcss": "^8.4.24",
         "postcss-custom-properties": "^13.2.0",
         "postcss-import": "^15.1.0",
+        "postcss-modules": "^6.0.0",
         "postcss-nested": "^6.0.1",
         "postcss-preset-env": "^8.4.2",
         "react": "^18.2.0",
