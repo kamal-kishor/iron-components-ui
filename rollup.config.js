@@ -3,7 +3,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
-import postcssCustomProperties from 'postcss-custom-properties';
+import postcssImport from 'postcss-import';
+import postcssNested from 'postcss-nested';
 
 const packageJson = require('./package.json');
 
@@ -28,11 +29,12 @@ export default {
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
             extract: false,
-            modules: {
-                generateScopedName: '[name]__[local]'
-            },
+            modules: true,
             autoModules: true,
-            plugins: [postcssCustomProperties()],
+            plugins: [
+                postcssImport(), // Add the postcss-import plugin
+                postcssNested() // Add the postcss-nested plugin
+            ],
             extensions: ['.css', 'scss', 'module.css']
         })
     ]
