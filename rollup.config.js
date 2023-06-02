@@ -29,13 +29,8 @@ export default {
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
             extract: false,
-            modules: {
-                generateScopedName: '[local]__[hash:base64:5]' // Custom generated class name format
-            },
-            plugins: [postcssImport(), postcssNested()],
-            autoModules: false,
-            minimize: false,
-            namedExports: true
+            modules: true,
+            plugins: [postcssImport(), postcssNested()]
         })
     ]
 };
