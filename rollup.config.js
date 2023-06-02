@@ -29,7 +29,7 @@ export default {
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
             extract: false,
-            modules: true,
+            modules: false,
             extensions: ['.css', 'scss', 'module.css']
         })
     ]
