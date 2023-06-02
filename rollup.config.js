@@ -29,11 +29,22 @@ export default {
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
             extract: false,
-            modules: {
-                exportGlobals: true,
-                localIdentName: '[local]__[hash:base64:5]'
-            },
-            plugins: [postcssImport(), postcssNested()]
+            modules: true,
+            plugins: [
+                postcssImport(),
+                postcssNested(),
+                {
+                    // Custom PostCSS plugin to add styles after the props className
+                    postcssPlugin: 'add-props-classname-last',
+                    Declaration(decl) {
+                        // Check if the declaration is a class name rule
+                        if (decl.prop === 'className') {
+                            // Append the props className after the existing value
+                            decl.value += ` ${this.props.className}`;
+                        }
+                    }
+                }
+            ]
         })
     ]
 };
