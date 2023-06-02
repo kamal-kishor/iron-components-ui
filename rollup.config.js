@@ -26,34 +26,12 @@ export default {
         commonjs(),
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
-            extract: true,
-            modules: {
-                generateScopedName: '[name]__[local]___[hash:base64:5]'
-            },
-            use: ['sass'], // Add any other required PostCSS plugins here
-            minimize: true,
-            inject: false,
-            sourceMap: true,
-            autoModules: true,
-            namedExports: true,
-            modules: true,
-            postcssModulesOptions: {
-                generateScopedName: '[name]__[local]___[hash:base64:5]'
-            },
-            loader: 'sass',
-            transform: (css) => {
-                const classNameRegex = /\.([^\s{]+)/g;
-                const defaultClassRegex = /\.root([^\s{]*)/g;
-
-                const customClasses = css.match(classNameRegex);
-                const defaultClasses = css.match(defaultClassRegex);
-
-                if (customClasses && defaultClasses) {
-                    const updatedCSS = css.replace(defaultClassRegex, '.root$1');
-                    return updatedCSS;
+            extensions: ['.css', 'module.css'],
+            import: (id) => {
+                if (id.endsWith('my-custom-styles.css')) {
+                    return false;
                 }
-
-                return css;
+                return true;
             }
         })
     ]
