@@ -28,8 +28,18 @@ export default {
         postcss({
             extract: false,
             modules: {
-                globalModulePaths: [/globals/],
-                generateScopedName: '[name]__[local]'
+                generateScopedName: '[name]__[local]',
+                getJSON: (_, exportTokens) => {
+                    // Custom mapping function to prioritize prop-based styles
+                    const propBasedStyles = Object.keys(exportTokens).reduce((result, key) => {
+                        if (key.startsWith('prop-')) {
+                            result[key] = exportTokens[key];
+                        }
+                        return result;
+                    }, {});
+
+                    Object.assign(exportTokens, propBasedStyles);
+                }
             },
             autoModules: true,
             plugins: [
