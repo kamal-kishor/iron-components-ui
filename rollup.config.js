@@ -29,8 +29,16 @@ export default {
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
             extract: false,
-            modules: false,
-            extensions: ['.css', 'scss', 'module.css']
+            modules: true,
+            extensions: ['.css', '.scss', '.module.css'],
+            namedExports: true,
+            use: ['sass'],
+            inject: {
+                insertAt: 'top'
+            },
+            extract: true,
+            minimize: true,
+            sourceMap: true
         })
     ]
 };
