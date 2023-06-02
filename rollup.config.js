@@ -3,7 +3,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
-import { terser } from 'rollup-plugin-terser';
 
 const packageJson = require('./package.json');
 
@@ -27,9 +26,7 @@ export default {
         commonjs(),
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
-            extensions: ['.css', 'module.css'],
             extract: true,
-            minimize: true,
             modules: true,
             namedExports: true,
             inject: false,
@@ -37,8 +34,19 @@ export default {
             autoModules: true,
             modules: {
                 generateScopedName: '[name]__[local]___[hash:base64:5]'
-            }
-        }),
-        terser()
+            },
+            use: ['sass'], // Add any other required PostCSS plugins here
+            // Add a custom PostCSS plugin to increase specificity of custom CSS classes
+            // This plugin prefixes all CSS selectors with a specific class name
+            // Change 'custom-css-prefix' to a class name that is unlikely to clash with other class names
+            postcssPlugins: [
+                (css) => {
+                    css.walkRules((rule) => {
+                        if (rule.selector.startsWith(':global')) return;
+                        rule.selectors = rule.selectors.map((selector) => `.custom-css-prefix ${selector}`);
+                    });
+                }
+            ]
+        })
     ]
 };

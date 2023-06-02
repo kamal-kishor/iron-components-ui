@@ -1,6 +1,6 @@
 {
     "name": "iron-components-ui",
-    "version": "1.0.43",
+    "version": "1.0.44",
     "description": "A component library for React, TS, Next",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
