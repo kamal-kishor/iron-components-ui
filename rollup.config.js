@@ -28,7 +28,7 @@ export default {
         commonjs(),
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
-            extract: true,
+            extract: false,
             modules: {
                 generateScopedName: '[local]__[hash:base64:5]' // Custom generated class name format
             },
