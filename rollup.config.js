@@ -28,25 +28,13 @@ export default {
         postcss({
             extract: false,
             modules: {
-                generateScopedName: '[name]__[local]',
-                getJSON: (_, exportTokens) => {
-                    // Custom mapping function to prioritize prop-based styles
-                    const propBasedStyles = Object.keys(exportTokens).reduce((result, key) => {
-                        if (key.startsWith('prop-')) {
-                            result[key] = exportTokens[key];
-                        }
-                        return result;
-                    }, {});
-
-                    Object.assign(exportTokens, propBasedStyles);
-                }
+                generateScopedName: '[name]__[local]'
             },
             autoModules: true,
-            plugins: [
-                require('postcss-preset-env')({
-                    stage: 0
-                })
-            ],
+            use: ['postcss-imported-vars'],
+            plugins: {
+                'postcss-imported-vars': {}
+            },
             extensions: ['.css', 'scss', 'module.css']
         })
     ]
