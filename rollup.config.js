@@ -29,13 +29,13 @@ export default {
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
             extract: true,
-            modules: true,
-            autoModules: true,
-            plugins: [
-                postcssImport(), // Add the postcss-import plugin
-                postcssNested() // Add the postcss-nested plugin
-            ],
-            extensions: ['.css', 'scss', 'module.css']
+            modules: {
+                generateScopedName: '[local]__[hash:base64:5]' // Custom generated class name format
+            },
+            plugins: [postcssImport(), postcssNested()],
+            autoModules: false,
+            minimize: false,
+            namedExports: true
         })
     ]
 };
