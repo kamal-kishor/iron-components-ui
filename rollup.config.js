@@ -27,15 +27,34 @@ export default {
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
             extract: true,
-            modules: true,
-            namedExports: true,
-            inject: false,
-            sourceMap: true,
-            autoModules: true,
             modules: {
                 generateScopedName: '[name]__[local]___[hash:base64:5]'
             },
-            use: ['sass'] // Add any other required PostCSS plugins here
+            use: ['sass'], // Add any other required PostCSS plugins here
+            minimize: true,
+            inject: false,
+            sourceMap: true,
+            autoModules: true,
+            namedExports: true,
+            modules: true,
+            postcssModulesOptions: {
+                generateScopedName: '[name]__[local]___[hash:base64:5]'
+            },
+            loader: 'sass',
+            transform: (css) => {
+                const classNameRegex = /\.([^\s{]+)/g;
+                const defaultClassRegex = /\.root([^\s{]*)/g;
+
+                const customClasses = css.match(classNameRegex);
+                const defaultClasses = css.match(defaultClassRegex);
+
+                if (customClasses && defaultClasses) {
+                    const updatedCSS = css.replace(defaultClassRegex, '.root$1');
+                    return updatedCSS;
+                }
+
+                return css;
+            }
         })
     ]
 };
