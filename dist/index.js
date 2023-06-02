@@ -3,23 +3,56 @@
 var React = require('react');
 
 function _interopNamespaceDefault(e) {
-    var n = Object.create(null);
-    if (e) {
-        Object.keys(e).forEach(function (k) {
-            if (k !== 'default') {
-                var d = Object.getOwnPropertyDescriptor(e, k);
-                Object.defineProperty(n, k, d.get ? d : {
-                    enumerable: true,
-                    get: function () { return e[k]; }
-                });
-            }
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: function () { return e[k]; }
         });
-    }
-    n.default = e;
-    return Object.freeze(n);
+      }
+    });
+  }
+  n.default = e;
+  return Object.freeze(n);
 }
 
 var React__namespace = /*#__PURE__*/_interopNamespaceDefault(React);
+
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css_248z$j = "*{font-family:Open Sans;font-size:16px;font-weight:400;line-height:22px}";
+styleInject(css_248z$j,{"insertAt":"top"});
+
+var css_248z$i = ".avatarContainer,img.avatarImage{border-radius:50%;cursor:pointer;height:50px;object-fit:cover;width:50px}span.avatarInitials{align-items:center;background-color:#0094da;border-radius:50%;color:#f1f1f1;display:flex;height:50px;justify-content:center;width:50px}";
+styleInject(css_248z$i,{"insertAt":"top"});
 
 const Avatar = ({ name = 'K', src, alt = 'avatar', size = 50, className, onClick }) => {
     const getInitials = (name) => {
@@ -1641,6 +1674,9 @@ const CloseIcon = () => {
         React.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
 };
 
+var css_248z$h = ".alert{border-radius:5px;display:flex;justify-content:space-between;padding:10px}span.AlertSpan{align-self:center}.alert-success{background-color:#d1ffcd;border:2px solid #78d178}.alert-failure{background-color:#ffcdcd;border:2px solid #d17878}.alert-warning{background-color:#faf4c7;border:2px solid #ecdd68}.closeIcon{cursor:pointer}";
+styleInject(css_248z$h,{"insertAt":"top"});
+
 const Alert = ({ message, type = 'success', timeout, isClosable = true, className }) => {
     const [isOpen, setIsOpen] = React.useState(true);
     const handleClose = () => {
@@ -1664,10 +1700,16 @@ const Alert = ({ message, type = 'success', timeout, isClosable = true, classNam
             React.createElement(CloseIcon, null)))));
 };
 
+var css_248z$g = "span.badge{border-radius:50%;height:20px;padding:4px;position:absolute;right:0;text-align:center;top:0;width:20px}span.badge.badge-primary{background-color:#0788dd;color:#fff}span.badge.badge-success{background-color:#78d178;color:#fff}span.badge.badge-danger{background-color:#d17878;color:#fff}span.badge.badge-warning{background-color:#ecdd68;color:#fff}";
+styleInject(css_248z$g,{"insertAt":"top"});
+
 const Badge = ({ label, type = 'primary', className, max = 11 }) => {
     const displayLabel = label > max ? `${max}+` : label;
     return (React.createElement("span", { className: className ? className : `badge badge-${type}`, "data-testid": "tooltip" }, displayLabel));
 };
+
+var css_248z$f = "button,label.button{border-radius:6px;cursor:pointer;padding:10px;text-align:center}.button-borderLess,label.borderLess{background:transparent;border:0;color:#4ab3e9;outline:0}.button-borderLess:hover,label.button-borderLess:hover{background:#e9eaec}.button-contained,label.button-contained{background:#4ab3e9;border:0;color:#fff}.button-contained:hover,label.button-contained:hover{background:#0c8ce9;box-shadow:0 4px 16px rgba(17,17,26,.1),0 8px 32px rgba(17,17,26,.05)}.button-outline,label.button-outline{background-color:transparent;border:.4px solid #4ab3e9;color:#4ab3e9}.button-outline:hover,label.button-outline:hover{background:#0c8ce9;color:#fff}button.button.button-contained.Icon{align-items:center;display:inline-flex}span.start-button-icon{display:inherit;margin-left:-4px;margin-right:8px}span.end-button-icon{display:inherit;margin-left:8px;margin-right:-4px}svg.button-icon-svg{font-size:19px}.button-icon-svg{fill:currentColor;display:inline-block;height:1em;user-select:none;width:1em}";
+styleInject(css_248z$f,{"insertAt":"top"});
 
 const Button = (props) => {
     const { bg, color, variant = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon, children } = props;
@@ -1681,6 +1723,9 @@ const Button = (props) => {
             React.createElement("label", { className: `${className ? className : `button button-${variant}`} ${disabled ? `button_disabled` : ''}`, htmlFor: "upload-btn" }, children ? children : 'Upload Button')))));
 };
 
+var css_248z$e = ".card{background-color:#fff;border-radius:4px;box-shadow:0 2px 1px -1px rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 1px 3px 0 rgba(0,0,0,.12);color:rgba(0,0,0,.87);max-width:345px;overflow:hidden}.noBorderCard{border:none}.cardFooter,.cardHead{align-items:center;justify-content:center;text-align:center}.cardHead{background:#d9d9d9;font-weight:500;margin:0}img.cardImg{background-position:50%;background-repeat:no-repeat;background-size:cover;display:block;object-fit:cover;width:100%}.cardBody{padding:16px}.cardFooter{display:flex;justify-content:start;padding:8px}.cardTitle{font-size:24px;font-weight:600;line-height:2.043;margin:0 0 .35em}.cardFooter,p.cardDesc{color:#858585;margin:0}p.cardDesc{font-size:.875rem;letter-spacing:.01071em;line-height:1.43}";
+styleInject(css_248z$e,{"insertAt":"top"});
+
 const Card = (props) => {
     const { className, padding, title = 'Title of Your Card', cardbody = 'This is the Body Section', border, cardheaderimg, height = '150px' } = props;
     const cardHeader = (React.createElement("div", { className: "cardHead", style: { height: height } },
@@ -1693,6 +1738,9 @@ const Card = (props) => {
             React.createElement("p", { className: "cardDesc" }, cardbody)),
         cardFooter));
 };
+
+var css_248z$d = ".DrawerContainer{background:#e0f5ff;color:#6c747e;display:flex;flex-direction:column;height:100vh;overflow-y:auto;padding:8px;position:absolute;width:257px;z-index:200}@keyframes slide-in-left{0%{transform:translateX(-100%)}to{transform:translateX(0);transition:margin .3s cubic-bezier(.4,0,.6,1) 0ms}}.DrawerContainer-left{animation:slide-in-left .3s ease-in-out forwards;left:0;top:auto}@keyframes slide-in-right{0%{transform:translateX(100%)}to{transform:translateX(0);transition:margin .3s cubic-bezier(.4,0,.6,1) 0ms}}.DrawerContainer-right{animation:slide-in-right .3s ease-in-out forwards;right:0;top:auto}";
+styleInject(css_248z$d,{"insertAt":"top"});
 
 const Drawer = ({ align = 'left', width, bg, color, className, style, isOpen = true, children }) => {
     const DrawerStyles = {
@@ -1713,6 +1761,9 @@ const DeleteIcon = () => {
     return (React.createElement("svg", { className: "button-icon-svg", viewBox: "0 0 24 24", "data-testid": "DeleteIcon" },
         React.createElement("path", { d: "M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" })));
 };
+
+var css_248z$c = ".IconButton-Label{border-radius:50%;cursor:pointer}.IconButton-Label:hover{box-shadow:0 4px 16px rgba(17,17,26,.1),0 8px 32px rgba(17,17,26,.05)}.IconButton-Label:hover svg.uploadIcon{fill:#0094da}svg.uploadIcon{fill:#2d3843}.IconButton-Label:hover svg.button-icon-svg{fill:#0094da}";
+styleInject(css_248z$c,{"insertAt":"top"});
 
 const IconButton = (props) => {
     const { children, className, multiple = false, onClick, type = 'button' } = props;
@@ -1736,6 +1787,9 @@ const ClosePassword = () => {
         React.createElement("svg", { width: "18", height: "14", viewBox: "0 0 26 24", xmlns: "http://www.w3.org/2000/svg", fillRule: "evenodd", clipRule: "evenodd" },
             React.createElement("path", { d: "M8.137 15.147c-.71-.857-1.146-1.947-1.146-3.147 0-2.76 2.241-5 5-5 1.201 0 2.291.435 3.148 1.145l1.897-1.897c-1.441-.738-3.122-1.248-5.035-1.248-6.115 0-10.025 5.355-10.842 6.584.529.834 2.379 3.527 5.113 5.428l1.865-1.865zm6.294-6.294c-.673-.53-1.515-.853-2.44-.853-2.207 0-4 1.792-4 4 0 .923.324 1.765.854 2.439l5.586-5.586zm7.56-6.146l-19.292 19.293-.708-.707 3.548-3.548c-2.298-1.612-4.234-3.885-5.548-6.169 2.418-4.103 6.943-7.576 12.01-7.576 2.065 0 4.021.566 5.782 1.501l3.501-3.501.707.707zm-2.465 3.879l-.734.734c2.236 1.619 3.628 3.604 4.061 4.274-.739 1.303-4.546 7.406-10.852 7.406-1.425 0-2.749-.368-3.951-.938l-.748.748c1.475.742 3.057 1.19 4.699 1.19 5.274 0 9.758-4.006 11.999-8.436-1.087-1.891-2.63-3.637-4.474-4.978zm-3.535 5.414c0-.554-.113-1.082-.317-1.562l.734-.734c.361.69.583 1.464.583 2.296 0 2.759-2.24 5-5 5-.832 0-1.604-.223-2.295-.583l.734-.735c.48.204 1.007.318 1.561.318 2.208 0 4-1.792 4-4z" }))));
 };
+
+var css_248z$b = ".commonInputDiv{border-radius:6px;padding:8px;user-select:none}.combinedInputField{display:flex}.adornmentContent,.oranmentContent{padding:7.5px}.adornInputField,.adornmentContent,.commonInputDiv,.oranInputField,.oranmentContent{background:transparent;border:.4px solid hsla(31,15%,50%,.25)}.adornmentContent{border-radius:6px 0 0 6px;border-right:0}.adornInputField,.oranInputField{align-items:start;align-items:center;display:flex;justify-content:space-between;padding:8px;user-select:none;width:100%}.adornInputField,.oranmentContent{border-radius:0 6px 6px 0}.oranInputField{border-radius:6px 0 0 6px}.oranmentContent{border-left:0}.commonInputDiv input:focus,input.InputAddOn-field:focus{background:transparent;border:none;outline:none}.combinedInputField:focus-within,.commonInputDiv:focus-within,.error.combinedInputField,.error.commonInputDiv{background:transparent;border-radius:6px}.combinedInputField:focus-within,.commonInputDiv:focus-within{border:.4px solid #0094da}.combinedInputField:focus-within .adornInputField,.combinedInputField:focus-within .adornmentContent,.combinedInputField:focus-within .oranInputField,.combinedInputField:focus-within .oranmentContent{border:0;outline:none}.combinedInputField:focus-within .adornmentContent{border-right:.4px solid hsla(31,15%,50%,.25)}.combinedInputField:focus-within .oranmentContent{border-left:.4px solid hsla(31,15%,50%,.25)}.error.combinedInputField,.error.commonInputDiv{border:.4px solid red}input{background:transparent;border:0;width:100%}span.InputAddOn-item{padding:0 4px}.InputAddOn-item{color:#666}";
+styleInject(css_248z$b,{"insertAt":"top"});
 
 const Input = (props) => {
     const { className, placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
@@ -1775,6 +1829,9 @@ const Input = (props) => {
                     React.createElement("span", { className: "InputAddOn-item", "data-testid": "oranment" }, ornament)))))));
 };
 
+var css_248z$a = ".NavBarContainer-top{background:#e0f5ff;color:#6c747e;display:flex;flex-direction:row;padding:8px 0;position:relative;transition:all .5s;width:100%;z-index:1200}";
+styleInject(css_248z$a,{"insertAt":"top"});
+
 const NavBar = ({ width, bg, color, style, children }) => {
     const navBarStyles = {
         width,
@@ -1789,6 +1846,9 @@ const RightArrow = () => {
     return (React.createElement("svg", { className: "greyColor", xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
         React.createElement("path", { d: "M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" })));
 };
+
+var css_248z$9 = ".menuContainer{background:transparent;color:#000;width:100%}.MenuType,.menuDropDownIcon,.menuLinkContainer{transition:all .5s}.menuLinkContainer{align-items:center;gap:15px;padding:8px 8px 8px 16px;place-content:start}.menuChild,.menuLinkContainer{color:#6c747d;cursor:pointer;display:flex}.menuLinkContainer:hover,span.menusText:hover{background:transparent;border-radius:8px;color:#0094da}svg.greyColor{fill:#6c757d}.menuLinkContainer:hover .greyColor path,.menuLinkContainer:hover .svg-icon path{fill:#0094da}a.menuLink,a.menuLink.active{color:#000;text-decoration:none}.MenuType{margin:4px 4px 8px}.menuItem_group_title{color:rgba(0,0,0,.45);padding:8px 16px}.menuChild{border:none;margin-left:30px;outline:none;padding:10px 14px;text-decoration:none}.menuChild:hover{background:transparent;border-radius:8px;color:#0094da}.menuDropDownIcon{display:inline-flex;margin-left:5px;padding-left:2px;vertical-align:middle;width:12px}.menuDropDownIcon.rotateNintee{transform:rotateNintee(90deg);transform:rotate(90deg) translateX(1px)}.menuItem_group_divider{border:solid rgba(5,5,5,.06);border-width:2px 0 0;line-height:0;margin-block:2px;margin-block-end:2px;margin-block-start:2px;overflow:hidden;padding:0}";
+styleInject(css_248z$9,{"insertAt":"top"});
 
 const Menu = ({ style, menuData, bg, color, onClick }) => {
     const [subItem, setSubItem] = React.useState(false);
@@ -1821,6 +1881,9 @@ const Menu = ({ style, menuData, bg, color, onClick }) => {
             menuItem?.type === 'divider' && React.createElement("div", { className: "menuItem_group_divider", key: index })))))));
 };
 
+var css_248z$8 = "span.menuItem-label{-webkit-box-pack:start;-webkit-box-align:center;align-items:center;border:0;border-radius:0;box-sizing:border-box;cursor:pointer;display:flex;justify-content:flex-start;margin:0;min-height:auto;outline:0;text-decoration:none;user-select:none;vertical-align:middle}span.menuItem-label:hover{color:#1e9de3}.selected{background:#eff2fc}.notSelected{background:transparent}.removeGutters{padding:6px 0}.addGutters{padding:6px 16px}";
+styleInject(css_248z$8,{"insertAt":"top"});
+
 const MenuItem = ({ autofocus = false, children = 'Menu Item', className, disableGutters = false, onClick, value = children }) => {
     const handleClick = () => {
         onClick(value);
@@ -1832,6 +1895,9 @@ const DownIcon = () => {
     return (React.createElement("svg", { className: "downIcon", viewBox: "0 0 24 24" },
         React.createElement("path", { d: "M7 10l5 5 5-5z" })));
 };
+
+var css_248z$7 = ".selectContainer{align-items:center;border:.4px solid #c4c4c4;display:inline-flex;justify-content:space-between}.selectItems{box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 0 1px 0 rgba(0,0,0,.12);margin-top:4px;outline:0;overflow:hidden auto;position:absolute;transition:box-shadow .3s cubic-bezier(.4,0,.2,1) 0ms;transition:all .3s ease-in-out}.selectContainer,.selectItems{background:transparent;border-radius:4px;color:#6c747e;padding:4px 8px}svg.downIcon{fill:rgba(0,0,0,.54);display:flex;height:1em;width:1em}.selctDownIcon,.selectItems{transition:all .5s}.selctDownIcon.rotateOneEighty{transform:rotate(180deg) translateX(0);transition:all .5s}.select{min-width:80px}";
+styleInject(css_248z$7,{"insertAt":"top"});
 
 const Select = ({ placeholder = 'select...', onChange, padding, width, option, ...props }) => {
     const [openSelect, setOpenSelect] = React.useState(false);
@@ -1885,6 +1951,9 @@ const Stack = ({ align = 'start', direction = 'column', isInline = false, justif
     return (React.createElement("div", { className: `StackContainer ${direction === 'column' ? 'column' : 'row'}`, style: stackStyles }, children));
 };
 
+var css_248z$6 = ".switch{display:inline-block;height:30px;position:relative;width:60px}.switch input[type=checkbox]{display:none}.switch label{background-color:gray;border-radius:25px;cursor:pointer;height:100%;left:0;position:absolute;top:0;transition:background-color .3s;width:100%}.switch label:after{background-color:#fff;border-radius:50%;content:\"\";height:20px;left:5px;position:absolute;top:5px;transition:transform .3s;width:20px}.switch input:checked+label{background-color:#0094da}.switch input:checked+label:after{transform:translateX(30px)}p.switchleftTag{padding-left:6px;padding-top:3px}p.switchrightTag{padding-right:9px;padding-top:4px;text-align:end}p.switchleftTag,p.switchrightTag{color:#fff;font-weight:500;margin:0}";
+styleInject(css_248z$6,{"insertAt":"top"});
+
 const Switch = (props) => {
     const { name, disabled, checked = false, onChange } = props;
     return (React.createElement("div", { className: "switch" },
@@ -1892,6 +1961,9 @@ const Switch = (props) => {
         React.createElement("label", { htmlFor: "switch-toggle" },
             React.createElement("p", { className: checked ? 'switchleftTag' : 'switchrightTag' }, checked ? 'On' : 'Off'))));
 };
+
+var css_248z$5 = ".table-container{border:1px solid #ddd;border-radius:8px;overflow:hidden}table.mainTable{border:0;border-collapse:collapse;outline:0;width:100%}table{border-radius:15px}";
+styleInject(css_248z$5,{"insertAt":"top"});
 
 const Table = ({ children, className }) => {
     return (React.createElement("div", { className: className ? className : 'table-container', "data-testid": "table-container" },
@@ -1902,9 +1974,15 @@ const TableBody = ({ children }) => {
     return React.createElement("tbody", null, children);
 };
 
+var css_248z$4 = "td.tableCell{color:grey;padding:8px;text-align:left}";
+styleInject(css_248z$4,{"insertAt":"top"});
+
 const TableCell = ({ children, className }) => {
     return React.createElement("td", { className: className ? className : 'tableCell' }, children);
 };
+
+var css_248z$3 = "tr.tableRow:nth-child(odd){background:#f9f9f9}";
+styleInject(css_248z$3,{"insertAt":"top"});
 
 const TableRow = ({ children, className }) => {
     return React.createElement("tr", { className: className ? className : 'tableRow' }, children);
@@ -1914,9 +1992,15 @@ const TableHeader = ({ children }) => {
     return React.createElement("thead", null, children);
 };
 
+var css_248z$2 = ".tableHead{background:#f1f1f1;font-weight:600;padding:8px;text-align:left}";
+styleInject(css_248z$2,{"insertAt":"top"});
+
 const TableHead = ({ children, className }) => {
     return React.createElement("th", { className: className ? className : 'tableHead' }, children);
 };
+
+var css_248z$1 = ".tooltipMainDiv{display:inline-block;position:relative}.textContainer{background-color:#313131;border-radius:4px;color:#fff;left:50%;margin-left:-60px;min-width:30px;opacity:.8;padding:5px;position:absolute;text-align:center;top:100%;visibility:visible;z-index:1}";
+styleInject(css_248z$1,{"insertAt":"top"});
 
 const Tooltip = ({ text, children }) => {
     const [showTooltip, setShowTooltip] = React.useState(false);
@@ -1930,6 +2014,9 @@ const Tooltip = ({ text, children }) => {
         children,
         showTooltip && React.createElement("span", { className: "textContainer " }, text)));
 };
+
+var css_248z = "textarea.textAreaInput{background:transparent;border:1px solid hsla(31,15%,50%,.25);border-radius:6px;outline:none;padding:8px}textarea.textAreaInput:focus{border:.5px solid #0094da;outline:none}textarea.error.textAreaInput{border:.5px solid red;outline:none}";
+styleInject(css_248z,{"insertAt":"top"});
 
 const TextArea = (props) => {
     const { placeholder, onChange, rows, cols, className, error = false, ...rest } = props;

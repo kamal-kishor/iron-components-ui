@@ -29,16 +29,17 @@ export default {
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
             extract: false,
-            modules: true,
-            extensions: ['.css', '.scss', '.module.css'],
-            namedExports: true,
-            use: ['sass'],
+            modules: false,
+            extensions: ['.css', 'scss', 'module.css'],
             inject: {
-                insertAt: 'top'
+                insertAt: 'top' // Insert custom className styles at the top
             },
-            extract: true,
+            autoModules: true,
+            getExportNamed: false,
             minimize: true,
-            sourceMap: true
+            modules: {
+                generateScopedName: '[name]__[local]___[hash:base64:5]' // CSS module class name format
+            }
         })
     ]
 };
