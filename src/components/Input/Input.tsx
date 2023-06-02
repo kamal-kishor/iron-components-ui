@@ -6,7 +6,7 @@ import '../../commonstyle/commonstyle.css';
 import './Input.css';
 
 export const Input: React.FunctionComponent<InputProps> = (props) => {
-    const { className = 'inputArea', placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
+    const { className, placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => {
         setShowPassword((prevState) => !prevState);
