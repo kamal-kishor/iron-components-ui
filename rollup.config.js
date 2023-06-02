@@ -34,19 +34,7 @@ export default {
             autoModules: true,
             modules: {
                 generateScopedName: '[name]__[local]___[hash:base64:5]'
-            },
-            use: ['sass'], // Add any other required PostCSS plugins here
-            // Add a custom PostCSS plugin to increase specificity of custom CSS classes
-            // This plugin prefixes all CSS selectors with a specific class name
-            // Change 'custom-css-prefix' to a class name that is unlikely to clash with other class names
-            postcssPlugins: [
-                (css) => {
-                    css.walkRules((rule) => {
-                        if (rule.selector.startsWith(':global')) return;
-                        rule.selectors = rule.selectors.map((selector) => `.custom-css-prefix ${selector}`);
-                    });
-                }
-            ]
+            }
         })
     ]
 };
