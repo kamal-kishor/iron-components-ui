@@ -3,6 +3,9 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
+import postcssImport from 'postcss-import';
+import postcssUrl from 'postcss-url';
+import autoprefixer from 'autoprefixer';
 
 const packageJson = require('./package.json');
 
@@ -26,13 +29,15 @@ export default {
         commonjs(),
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
-            extensions: ['.css', 'module.css'],
-            import: (id) => {
-                if (id.endsWith('my-custom-styles.css')) {
-                    return false;
-                }
-                return true;
-            }
+            extract: true,
+            modules: true,
+            namedExports: true,
+            inject: false,
+            sourceMap: true,
+            autoModules: true,
+            plugins: [postcssImport(), postcssUrl(), autoprefixer()],
+            minimize: false,
+            use: ['sass'] // Add any other required PostCSS plugins here
         })
     ]
 };
