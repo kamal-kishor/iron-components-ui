@@ -34,7 +34,18 @@ export default {
             autoModules: true,
             modules: {
                 generateScopedName: '[name]__[local]___[hash:base64:5]'
-            }
+            },
+            use: ['sass'], // Add any other required PostCSS plugins here
+            // Add a custom PostCSS plugin to increase specificity of custom CSS classes
+            postcssPlugins: [
+                (css) => {
+                    const rootSelector = ':global(.root)'; // Change .root to the class name of the root element in your component
+                    css.walkRules((rule) => {
+                        if (rule.selector.startsWith(':global')) return;
+                        rule.selector = `${rootSelector} ${rule.selector}`;
+                    });
+                }
+            ]
         })
     ]
 };
