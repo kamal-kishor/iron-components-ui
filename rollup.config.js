@@ -29,15 +29,32 @@ export default {
         commonjs(),
         typescript({ useTsconfigDeclarationDir: true }),
         postcss({
+            extensions: ['.css'],
             extract: true,
-            modules: true,
+            modules: {
+                generateScopedName: '[name]__[local]___[hash:base64:5]'
+            },
             namedExports: true,
             inject: false,
             sourceMap: true,
             autoModules: true,
             plugins: [postcssImport(), postcssUrl(), autoprefixer()],
+            use: ['sass'],
             minimize: false,
-            use: ['sass'] // Add any other required PostCSS plugins here
+            transform: (css) => {
+                const classNameRegex = /\.([^\s{]+)/g;
+                const defaultClassRegex = /\.default([^\s{]*)/g;
+
+                const customClasses = css.match(classNameRegex);
+                const defaultClasses = css.match(defaultClassRegex);
+
+                if (customClasses && defaultClasses) {
+                    const updatedCSS = css.replace(defaultClassRegex, '.default$1');
+                    return updatedCSS;
+                }
+
+                return css;
+            }
         })
     ]
 };
