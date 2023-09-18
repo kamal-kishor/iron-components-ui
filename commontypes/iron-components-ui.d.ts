@@ -1,4 +1,4 @@
-declare module 'technogetic-iron-smart-ui' {
+declare module 'iron-components-ui' {
     // Define your type declarations here
     export interface AlertProps {
         message: string;

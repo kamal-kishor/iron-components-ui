@@ -1,6 +1,6 @@
 {
     "name": "iron-components-ui",
-    "version": "1.0.72",
+    "version": "1.0.75",
     "description": "A component library for React, TS, Next",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
@@ -61,7 +61,7 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "rollup": "^3.14.0",
-        "rollup-plugin-dts": "^5.1.1",
+        "rollup-plugin-dts": "^5.3.1",
         "rollup-plugin-peer-deps-external": "^2.2.4",
         "rollup-plugin-postcss": "^4.0.2",
         "rollup-plugin-terser": "^7.0.2",
