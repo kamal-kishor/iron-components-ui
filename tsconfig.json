@@ -10,7 +10,7 @@
         "types": ["node", "jest"],
         "declaration": true,
         "sourceMap": true,
-        "outDir": "dist/esm",
+        "outDir": "dist",
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "noImplicitAny": true,
