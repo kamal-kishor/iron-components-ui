@@ -1,12 +1,13 @@
 {
     "name": "iron-components-ui",
-    "version": "1.0.75",
+    "version": "0.0.3",
     "description": "A component library for React, TS, Next",
     "main": "dist/index.js",
     "types": "index.d.ts",
     "module": "dist/index.esm.js",
     "files": [
-        "dist"
+        "dist",
+        "types"
     ],
     "scripts": {
         "rollup": "rollup -c --bundleConfigAsCjs",
