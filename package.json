@@ -1,6 +1,6 @@
 {
     "name": "iron-components-ui",
-    "version": "1.0.76",
+    "version": "1.0.75",
     "description": "A component library for React, TS, Next",
     "main": "dist/index.js",
     "types": "index.d.ts",
