@@ -20,17 +20,17 @@ export default {
             format: 'esm',
             sourcemap: true
         },
-        { file: 'dist/iron-components-ui.d.ts', format: 'es' }
+        { file: 'dist/iron-components-ui.d.ts', format: 'esm' },
+        { file: 'types/iron-components-ui.d.ts', format: 'esm' }
     ],
     plugins: [
         peerDepsExternal(),
-        resolve(),
+        resolve({ extensions: ['.js', '.jsx', '.ts', '.tsx'] }),
         commonjs(),
         typescript({ useTsconfigDeclarationDir: true }),
         dts(),
         postcss({
             extract: false,
-            modules: false,
             extensions: ['.css', 'scss', 'module.css'],
             inject: {
                 insertAt: 'top' // Insert custom className styles at the top
