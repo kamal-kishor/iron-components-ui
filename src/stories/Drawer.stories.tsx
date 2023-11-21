@@ -14,46 +14,19 @@ const Template: ComponentStory<typeof Drawer> = (args) => {
     const handleClick = () => {
         setIsOpen(!isOpen);
     };
+    const clickHandler = (e: React.ReactNode) => {
+        console.log(e);
+    };
     return (
         <>
             <Button onClick={handleClick}>Toggle Drawer</Button>
             <Drawer {...args} isOpen={isOpen}>
                 <>
-                    <MenuItem
-                        onClick={(e: string) => {
-                            console.log(e);
-                        }}
-                    >
-                        Item-1
-                    </MenuItem>
-                    <MenuItem
-                        onClick={(e: string) => {
-                            console.log(e);
-                        }}
-                    >
-                        Item-2
-                    </MenuItem>
-                    <MenuItem
-                        onClick={(e: string) => {
-                            console.log(e);
-                        }}
-                    >
-                        Item-3
-                    </MenuItem>
-                    <MenuItem
-                        onClick={(e: string) => {
-                            console.log(e);
-                        }}
-                    >
-                        Item-4
-                    </MenuItem>
-                    <MenuItem
-                        onClick={(e: string) => {
-                            console.log(e);
-                        }}
-                    >
-                        Item-5
-                    </MenuItem>
+                    <MenuItem onClick={clickHandler}>Item-1</MenuItem>
+                    <MenuItem onClick={clickHandler}>Item-2</MenuItem>
+                    <MenuItem onClick={clickHandler}>Item-3</MenuItem>
+                    <MenuItem onClick={clickHandler}>Item-4</MenuItem>
+                    <MenuItem onClick={clickHandler}>Item-5</MenuItem>
                 </>
             </Drawer>
         </>

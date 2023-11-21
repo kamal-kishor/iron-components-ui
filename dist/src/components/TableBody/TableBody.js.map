@@ -1,1 +1,0 @@
-{"version":3,"file":"TableBody.js","sourceRoot":"","sources":["../../../../src/components/TableBody/TableBody.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAC1B,OAAO,mCAAmC,CAAC;AAG3C,MAAM,CAAC,MAAM,SAAS,GAAG,CAAC,EAAE,QAAQ,EAAkB,EAAe,EAAE;IACnE,OAAO,mCAAQ,QAAQ,CAAS,CAAC;AACrC,CAAC,CAAC"}

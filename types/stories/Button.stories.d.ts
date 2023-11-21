@@ -1,0 +1,11 @@
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ButtonProps } from '../interfaces/CommonInterface';
+declare const _default: ComponentMeta<(props: React.PropsWithChildren<ButtonProps>) => JSX.Element>;
+export default _default;
+export declare const Primary: ComponentStory<(props: React.PropsWithChildren<ButtonProps>) => JSX.Element>;
+export declare const Contained: ComponentStory<(props: React.PropsWithChildren<ButtonProps>) => JSX.Element>;
+export declare const Outline: ComponentStory<(props: React.PropsWithChildren<ButtonProps>) => JSX.Element>;
+export declare const Upload: ComponentStory<(props: React.PropsWithChildren<ButtonProps>) => JSX.Element>;
+export declare const startIcon: ComponentStory<(props: React.PropsWithChildren<ButtonProps>) => JSX.Element>;
+export declare const endIcon: ComponentStory<(props: React.PropsWithChildren<ButtonProps>) => JSX.Element>;

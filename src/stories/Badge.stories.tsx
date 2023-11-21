@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Badge } from '../components/Badge/Badge';
+import { BadgeProps } from '../interfaces/CommonInterface';
 
 export default {
     title: 'ReactComponentLibrary/Badge',
@@ -21,7 +22,8 @@ export const Success = Template.bind({});
 Success.args = {
     type: 'success',
     style: { height: '2px', width: '2px' }
-};
+} as Partial<BadgeProps>;
+
 export const Warning = Template.bind({});
 
 Warning.args = {

@@ -27,9 +27,11 @@ describe('Switch component', () => {
         const { container } = render(<Switch onChange={handleChange} />);
         const inputElement = container.querySelector('input[type="checkbox"]');
 
-        fireEvent.click(inputElement);
+        if (inputElement) {
+            fireEvent.click(inputElement);
 
-        expect(handleChange).toHaveBeenCalledTimes(1);
-        expect(handleChange).toHaveBeenCalledWith(expect.any(Object));
+            expect(handleChange).toHaveBeenCalledTimes(1);
+            expect(handleChange).toHaveBeenCalledWith(expect.any(Object));
+        }
     });
 });

@@ -35,8 +35,8 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
     className?: string;
     type?: string;
     multiple?: boolean;
-    startIcon?: string;
-    endIcon?: string;
+    startIcon?: JSX.Element | string;
+    endIcon?: JSX.Element | string;
     children?: string | number;
 }
 
@@ -95,7 +95,7 @@ export interface subMenuInterface {
 export interface MenuProps {
     label?: string;
     key?: string | number;
-    icon?: string;
+    icon?: JSX.Element | string;
     children?: subMenuInterface[];
     type?: string;
     href?: string;
@@ -134,7 +134,7 @@ export interface SelectProps {
 
 export interface StackProps {
     align?: 'start' | 'center' | 'end';
-    direction?: 'row' | 'column';
+    direction?: 'row' | 'column' | 'row-reverse';
     justify?: 'start' | 'center' | 'end' | 'space-between' | 'space-around' | 'space-evenly';
     isInline?: boolean;
     spacing?: number;

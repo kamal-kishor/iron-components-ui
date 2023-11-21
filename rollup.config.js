@@ -3,7 +3,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
-import { dts } from 'rollup-plugin-dts';
 
 const packageJson = require('./package.json');
 
@@ -19,15 +18,13 @@ export default {
             file: packageJson.module,
             format: 'esm',
             sourcemap: true
-        },
-        { file: 'dist/iron-components-ui.d.ts', format: 'es' }
+        }
     ],
     plugins: [
         peerDepsExternal(),
         resolve(),
         commonjs(),
         typescript({ useTsconfigDeclarationDir: true }),
-        dts(),
         postcss({
             extract: false,
             modules: false,

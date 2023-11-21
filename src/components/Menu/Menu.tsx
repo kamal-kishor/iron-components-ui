@@ -25,16 +25,18 @@ export const Menu: React.FC<MenuItem> = ({ style, menuData, bg, color, onClick }
     return (
         <BrowserRouter>
             <div className="menuContainer" style={menuStyles}>
-                {menuData.map((menuItem, index) => (
+                {menuData?.map((menuItem, index) => (
                     <React.Fragment key={index}>
                         {menuItem?.icon && menuItem?.label && (
-                            <NavLink to={menuItem.href} className="menuLink">
+                            <NavLink to={menuItem.href || '/'} className="menuLink">
                                 <div className="MenuType">
                                     {menuItem?.type !== 'divider' && <div className="menuItem_group_title">{menuItem.type}</div>}
                                     <div
                                         className="menuLinkContainer"
                                         onClick={() => {
-                                            handleSubItem(menuItem.key);
+                                            if (menuItem.key !== undefined) {
+                                                handleSubItem(menuItem.key);
+                                            }
                                         }}
                                         style={menuStyles}
                                     >
@@ -52,7 +54,7 @@ export const Menu: React.FC<MenuItem> = ({ style, menuData, bg, color, onClick }
                         {currmenu === menuItem.key && menuItem.children && currmenu && subItem && (
                             <>
                                 {menuItem.children.map((mapChild) => (
-                                    <NavLink to={mapChild.href} key={mapChild.key} className="menuLink">
+                                    <NavLink to={mapChild.href || '/'} key={mapChild.key} className="menuLink">
                                         <div className="menuChild" key={mapChild.key} style={{ display: subItem ? 'block' : 'none', color: `${color}` }}>
                                             {mapChild.label}
                                         </div>
