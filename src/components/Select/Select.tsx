@@ -5,10 +5,11 @@ import { MenuItem } from '../MenuItem';
 import '../../commonstyle/commonstyle.css';
 import './Select.css';
 
-export const Select: React.FC<SelectProps> = ({ placeholder = 'select...', onChange, padding, width, option, ...props }) => {
+export const Select: React.FC<SelectProps> = ({ placeholder = 'select...', onChange, padding, containerWidth, optionWidth, className, option, ...props }) => {
     const [openSelect, setOpenSelect] = useState<boolean>(false);
     const [selectedValue, setSelectedValue] = useState<string | number>('');
     const selectRef = useRef<HTMLDivElement>(null);
+
     const handleSelectOpen = () => {
         setOpenSelect(!openSelect);
     };
@@ -32,22 +33,26 @@ export const Select: React.FC<SelectProps> = ({ placeholder = 'select...', onCha
     };
     const containerStyle = {
         padding: padding || '',
-        width: placeholder.length > 0 ? `${placeholder.length * 10}px` : ''
+        width: containerWidth || (placeholder.length > 0 ? `${placeholder.length * 10}px` : '')
+    };
+
+    const optionStyle = {
+        width: optionWidth
     };
 
     return (
         <>
-            <div {...props} className="selectContainer select" style={containerStyle} onClick={handleSelectOpen} ref={selectRef}>
+            <div {...props} className={`selectContainer select ${className || ''}`} style={containerStyle} onClick={handleSelectOpen} ref={selectRef}>
                 {selectedValue ? selectedValue : placeholder}
                 <span className={`selctDownIcon ${openSelect ? 'rotateOneEighty' : ''}`}>
                     <DownIcon />
                 </span>
             </div>
             {openSelect && option && (
-                <div className="selectItems select" style={containerStyle}>
+                <div className={`selectItems select ${className || ''}`} style={optionStyle}>
                     {option.map((selectData) => {
                         return (
-                            <MenuItem onClick={() => handleSelectClick(selectData)} key={selectData}>
+                            <MenuItem disableGutters={true} onClick={() => handleSelectClick(selectData)} key={selectData}>
                                 {selectData}
                             </MenuItem>
                         );

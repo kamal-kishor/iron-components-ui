@@ -1920,7 +1920,7 @@ var css_248z$7 = ".selectContainer{align-items:center;border:.4px solid #c4c4c4;
 styleInject(css_248z$7,{"insertAt":"top"});
 
 const Select = (_a) => {
-    var { placeholder = 'select...', onChange, padding, width, option } = _a, props = __rest(_a, ["placeholder", "onChange", "padding", "width", "option"]);
+    var { placeholder = 'select...', onChange, padding, containerWidth, optionWidth, className, option } = _a, props = __rest(_a, ["placeholder", "onChange", "padding", "containerWidth", "optionWidth", "className", "option"]);
     const [openSelect, setOpenSelect] = React.useState(false);
     const [selectedValue, setSelectedValue] = React.useState('');
     const selectRef = React.useRef(null);
@@ -1947,15 +1947,18 @@ const Select = (_a) => {
     };
     const containerStyle = {
         padding: padding || '',
-        width: placeholder.length > 0 ? `${placeholder.length * 10}px` : ''
+        width: containerWidth || (placeholder.length > 0 ? `${placeholder.length * 10}px` : '')
+    };
+    const optionStyle = {
+        width: optionWidth
     };
     return (React.createElement(React.Fragment, null,
-        React.createElement("div", Object.assign({}, props, { className: "selectContainer select", style: containerStyle, onClick: handleSelectOpen, ref: selectRef }),
+        React.createElement("div", Object.assign({}, props, { className: `selectContainer select ${className || ''}`, style: containerStyle, onClick: handleSelectOpen, ref: selectRef }),
             selectedValue ? selectedValue : placeholder,
             React.createElement("span", { className: `selctDownIcon ${openSelect ? 'rotateOneEighty' : ''}` },
                 React.createElement(DownIcon, null))),
-        openSelect && option && (React.createElement("div", { className: "selectItems select", style: containerStyle }, option.map((selectData) => {
-            return (React.createElement(MenuItem, { onClick: () => handleSelectClick(selectData), key: selectData }, selectData));
+        openSelect && option && (React.createElement("div", { className: `selectItems select ${className || ''}`, style: optionStyle }, option.map((selectData) => {
+            return (React.createElement(MenuItem, { disableGutters: true, onClick: () => handleSelectClick(selectData), key: selectData }, selectData));
         })))));
 };
 

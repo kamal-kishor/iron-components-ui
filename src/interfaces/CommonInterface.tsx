@@ -128,7 +128,9 @@ export interface SelectProps {
     option?: string[];
     placeholder?: string;
     padding?: string;
-    width?: string;
+    containerWidth?: string;
+    optionWidth?: string;
+    className?: string;
     onChange?: (selectedValue: string | number) => void;
 }
 
